@@ -3,18 +3,19 @@ package com.alibaba.druid.bvt.pool;
 import com.alibaba.druid.mock.MockDriver;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
+import junit.framework.TestCase;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class InitExceptionThrowTest extends TestClone {
+public class InitExceptionThrowTest extends TestCase {
     private DruidDataSource dataSource = new DruidDataSource();
 
     private int connectCount = 0;
 
     protected void setUp() throws Exception {
-        dataSource.setInitExceptionThrow(true);
+        dataSource.setInitExceptionThrow(false);
         dataSource.setUrl("jdbc:mock:xxx");
         dataSource.setDriver(new MockDriver() {
             public Connection connect(String url, Properties info) throws SQLException {
